@@ -219,8 +219,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     onClick={() => update('codePlacement', 'top-left')}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       config.codePlacement === 'top-left'
-                        ? 'bg-white text-[#18181b] font-semibold shadow-xs'
-                        : 'text-[#71717a] hover:text-[#18181b]'
+                        ? 'bg-[#0f766e] text-white font-semibold shadow-xs'
+                        : 'text-[#71717a] hover:text-[#0f766e]'
                     }`}
                   >
                     Top-Left
@@ -229,8 +229,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     onClick={() => update('codePlacement', 'top-right')}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       config.codePlacement === 'top-right'
-                        ? 'bg-white text-[#18181b] font-semibold shadow-xs'
-                        : 'text-[#71717a] hover:text-[#18181b]'
+                        ? 'bg-[#0f766e] text-white font-semibold shadow-xs'
+                        : 'text-[#71717a] hover:text-[#0f766e]'
                     }`}
                   >
                     Top-Right
@@ -259,8 +259,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     onClick={() => update('denomination', opt)}
                     className={`px-3 py-1 text-xs font-medium rounded-full transition-all cursor-pointer active:scale-[0.97] ${
                       config.denomination === opt
-                        ? 'bg-[#18181b] text-white shadow-xs'
-                        : 'bg-white border border-[#e8e5df] text-[#52525b] hover:border-[#18181b]'
+                        ? 'bg-[#0f766e] text-white shadow-xs'
+                        : 'bg-white border border-[#e8e5df] text-[#52525b] hover:border-[#0f766e] hover:text-[#0f766e]'
                     }`}
                   >
                     {opt}
@@ -310,7 +310,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 <label className="text-xs font-medium text-[#71717a]">
                   Color Palettes
                 </label>
-                <span className="text-[11px] text-[#71717a] bg-[#f1efe9] px-2 py-0.5 rounded-full font-medium">
+                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
                   {Object.keys(PALETTES).length} formulas
                 </span>
               </div>
@@ -333,10 +333,10 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             <div className="pt-2 border-t border-[#e8e5df]">
               <button
                 onClick={() => setShowCustomColors(!showCustomColors)}
-                className="flex items-center justify-between w-full text-xs font-medium text-[#52525b] hover:text-[#18181b] transition-colors py-1 cursor-pointer"
+                className="flex items-center justify-between w-full text-xs font-medium text-[#52525b] hover:text-[#0f766e] transition-colors py-1 cursor-pointer"
               >
                 <span>Custom Color Inks</span>
-                <span className="text-[#71717a] font-bold">{showCustomColors ? '▲' : '▼'}</span>
+                <span className="text-[#0f766e] font-bold">{showCustomColors ? '▲' : '▼'}</span>
               </button>
 
               {showCustomColors && (
@@ -426,7 +426,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 <label className="text-xs font-medium text-[#71717a]">
                   Motif Artwork
                 </label>
-                <span className="text-[11px] text-[#71717a] bg-[#f1efe9] px-2 py-0.5 rounded-full font-medium">
+                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
                   {MOTIFS.length} styles
                 </span>
               </div>
@@ -451,7 +451,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-medium text-[#71717a]">Motif Scale</label>
-                <span className="text-xs font-semibold text-[#18181b]">{Math.round(config.motifScale * 100)}%</span>
+                <span className="text-xs font-semibold text-[#0f766e]">{Math.round(config.motifScale * 100)}%</span>
               </div>
               <input
                 type="range"
@@ -460,7 +460,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="0.05"
                 value={config.motifScale}
                 onChange={(e) => update('motifScale', parseFloat(e.target.value))}
-                className="w-full accent-[#18181b] cursor-pointer"
+                className="w-full accent-[#0f766e] cursor-pointer"
               />
             </div>
 
@@ -468,7 +468,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-medium text-[#71717a]">Line Density &amp; Complexity</label>
-                <span className="text-xs font-semibold text-[#18181b]">{config.motifComplexity}</span>
+                <span className="text-xs font-semibold text-[#0f766e]">{config.motifComplexity}</span>
               </div>
               <input
                 type="range"
@@ -477,7 +477,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="1"
                 value={config.motifComplexity}
                 onChange={(e) => update('motifComplexity', parseInt(e.target.value, 10))}
-                className="w-full accent-[#18181b] cursor-pointer"
+                className="w-full accent-[#0f766e] cursor-pointer"
               />
             </div>
           </div>
@@ -491,7 +491,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 <label className="text-xs font-medium text-[#71717a]">
                   Frame Styles
                 </label>
-                <span className="text-[11px] text-[#71717a] bg-[#f1efe9] px-2 py-0.5 rounded-full font-medium">
+                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
                   {BORDER_STYLES.length} styles
                 </span>
               </div>
@@ -517,7 +517,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 <label className="text-xs font-medium text-[#71717a]">
                   Perforation Tooth Depth
                 </label>
-                <span className="text-xs font-semibold text-[#18181b]">{config.perforationRadius} px</span>
+                <span className="text-xs font-semibold text-[#0f766e]">{config.perforationRadius} px</span>
               </div>
               <input
                 type="range"
@@ -526,7 +526,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="0.5"
                 value={config.perforationRadius}
                 onChange={(e) => update('perforationRadius', parseFloat(e.target.value))}
-                className="w-full accent-[#18181b] cursor-pointer"
+                className="w-full accent-[#0f766e] cursor-pointer"
               />
             </div>
 
@@ -536,7 +536,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 <label className="text-xs font-medium text-[#71717a]">
                   Perforation Spacing
                 </label>
-                <span className="text-xs font-semibold text-[#18181b]">{config.perforationSpacing} px</span>
+                <span className="text-xs font-semibold text-[#0f766e]">{config.perforationSpacing} px</span>
               </div>
               <input
                 type="range"
@@ -545,7 +545,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="1"
                 value={config.perforationSpacing}
                 onChange={(e) => update('perforationSpacing', parseInt(e.target.value, 10))}
-                className="w-full accent-[#18181b] cursor-pointer"
+                className="w-full accent-[#0f766e] cursor-pointer"
               />
             </div>
           </div>
@@ -563,7 +563,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 type="checkbox"
                 checked={config.postmark.enabled}
                 onChange={(e) => updatePostmark('enabled', e.target.checked)}
-                className="w-4 h-4 rounded accent-[#18181b] cursor-pointer"
+                className="w-4 h-4 rounded accent-[#0f766e] cursor-pointer"
               />
             </div>
 
@@ -603,7 +603,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     <label className="text-xs font-medium text-[#71717a]">
                       Stamp Angle
                     </label>
-                    <span className="text-xs font-semibold text-[#18181b]">{config.postmark.rotation}°</span>
+                    <span className="text-xs font-semibold text-[#0f766e]">{config.postmark.rotation}°</span>
                   </div>
                   <input
                     type="range"
@@ -612,7 +612,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     step="1"
                     value={config.postmark.rotation}
                     onChange={(e) => updatePostmark('rotation', parseInt(e.target.value, 10))}
-                    className="w-full accent-[#18181b] cursor-pointer"
+                    className="w-full accent-[#0f766e] cursor-pointer"
                   />
                 </div>
 
@@ -623,7 +623,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     type="checkbox"
                     checked={config.postmark.wavyBars}
                     onChange={(e) => updatePostmark('wavyBars', e.target.checked)}
-                    className="w-4 h-4 rounded accent-[#18181b] cursor-pointer"
+                    className="w-4 h-4 rounded accent-[#0f766e] cursor-pointer"
                   />
                 </div>
               </div>

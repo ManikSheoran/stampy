@@ -133,7 +133,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
                   href={pngApiUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#18181b] font-semibold hover:underline"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#0f766e] font-semibold hover:underline"
                 >
                   <span>Open PNG</span>
                   <ArrowSquareOut size={11} />
@@ -142,7 +142,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
             </div>
 
             <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#faf9f6] border border-[#e8e5df] font-mono text-xs">
-              <span className="text-emerald-600 font-bold select-none text-[11px] px-1.5 py-0.5 rounded bg-emerald-50 border border-emerald-200">GET</span>
+              <span className="text-[#0f766e] font-bold select-none text-[11px] px-2 py-0.5 rounded-full bg-[#f0fdfa] border border-[#99f6e4]">GET</span>
               <input
                 type="text"
                 readOnly
@@ -171,7 +171,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
                     key={tab}
                     onClick={() => setActiveSnippetTab(tab)}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                      activeSnippetTab === tab ? 'bg-white text-[#18181b] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#18181b]'
+                      activeSnippetTab === tab ? 'bg-white text-[#0f766e] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#0f766e]'
                     }`}
                   >
                     {tab === 'html' ? 'HTML' : tab === 'markdown' ? 'Markdown' : tab === 'fetch' ? 'JavaScript' : 'cURL'}

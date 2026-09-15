@@ -60,7 +60,7 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
               onClick={() => setStageBg('envelope')}
               title="Warm Neutral Paper"
               className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                stageBg === 'envelope' ? 'bg-white text-[#18181b] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#18181b]'
+                stageBg === 'envelope' ? 'bg-white text-[#0f766e] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#0f766e]'
               }`}
             >
               Warm
@@ -69,7 +69,7 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
               onClick={() => setStageBg('mat')}
               title="Dark Cutting Mat"
               className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                stageBg === 'mat' ? 'bg-white text-[#18181b] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#18181b]'
+                stageBg === 'mat' ? 'bg-white text-[#0f766e] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#0f766e]'
               }`}
             >
               Mat
@@ -78,7 +78,7 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
               onClick={() => setStageBg('paper')}
               title="Clean White Paper"
               className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                stageBg === 'paper' ? 'bg-white text-[#18181b] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#18181b]'
+                stageBg === 'paper' ? 'bg-white text-[#0f766e] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#0f766e]'
               }`}
             >
               Paper
@@ -87,7 +87,7 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
               onClick={() => setStageBg('grid')}
               title="Transparency Checkerboard"
               className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                stageBg === 'grid' ? 'bg-white text-[#18181b] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#18181b]'
+                stageBg === 'grid' ? 'bg-white text-[#0f766e] font-semibold shadow-xs' : 'text-[#71717a] hover:text-[#0f766e]'
               }`}
             >
               Grid
@@ -171,7 +171,7 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
           onClick={onOpenApiModal}
           className="btn-secondary text-xs"
         >
-          <Sparkle size={14} weight="fill" className="text-[#18181b]" />
+          <Sparkle size={14} weight="fill" className="text-[#0f766e]" />
           <span>GET API Snippet &rarr;</span>
         </button>
       </div>

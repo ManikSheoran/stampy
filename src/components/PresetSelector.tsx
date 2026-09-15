@@ -32,7 +32,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
           <span className="text-xs font-semibold text-[#18181b]">
             Featured Presets
           </span>
-          <span className="text-[11px] text-[#71717a] bg-[#f1efe9] px-2 py-0.5 rounded-full font-medium">
+          <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
             {STAMP_PRESETS.length} presets
           </span>
         </div>
@@ -51,8 +51,8 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               onClick={() => onSelectPreset(preset.config, preset.id)}
               className={`group flex-shrink-0 flex items-center gap-3 p-2.5 rounded-2xl text-left transition-all duration-150 cursor-pointer active:scale-[0.98] ${
                 isSelected
-                  ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
-                  : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
+                  ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
+                  : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
               }`}
             >
               {/* Real rendered mini stamp */}
@@ -61,7 +61,9 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               {/* Information */}
               <div className="flex flex-col pr-1">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-semibold text-[#18181b] leading-tight">
+                  <span className={`text-xs font-semibold leading-tight transition-colors ${
+                    isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
+                  }`}>
                     {preset.name}
                   </span>
                 </div>

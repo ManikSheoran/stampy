@@ -34,8 +34,8 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
+          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
       }`}
     >
       {/* Real Miniature Stamp Preview */}
@@ -48,7 +48,7 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
 
       {/* Typography */}
       <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
-        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
       }`}>
         {label}
       </span>
@@ -90,8 +90,8 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
+          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
       }`}
     >
       {/* Real Miniature Stamp Preview with Border */}
@@ -103,7 +103,7 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
       </div>
 
       <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
-        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
       }`}>
         {label}
       </span>
@@ -143,8 +143,8 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
+          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
       }`}
     >
       {/* Real Miniature Stamp Preview with Palette */}
@@ -156,7 +156,7 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
       </div>
 
       <span className={`text-xs font-semibold mt-1.5 truncate max-w-full transition-colors ${
-        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
       }`}>
         {palette.name}
       </span>
