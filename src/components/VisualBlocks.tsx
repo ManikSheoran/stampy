@@ -34,15 +34,10 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#18181b] shadow-xs'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#a1a1aa]'
+          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
       }`}
     >
-      {/* Active Indicator Pip */}
-      {isSelected && (
-        <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-[#18181b]" />
-      )}
-
       {/* Real Miniature Stamp Preview */}
       <div className="stamp-thumb-wrap w-[70px] h-[93px] my-1 transition-transform duration-200 group-hover:scale-105">
         <div 
@@ -52,7 +47,9 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
       </div>
 
       {/* Typography */}
-      <span className="text-xs font-semibold text-[#18181b] mt-1.5 leading-tight">
+      <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
+        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+      }`}>
         {label}
       </span>
       <span className="text-[11px] text-[#71717a] capitalize mt-0.5">
@@ -93,14 +90,10 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#18181b] shadow-xs'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#a1a1aa]'
+          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
       }`}
     >
-      {isSelected && (
-        <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-[#18181b]" />
-      )}
-
       {/* Real Miniature Stamp Preview with Border */}
       <div className="stamp-thumb-wrap w-[70px] h-[93px] my-1 transition-transform duration-200 group-hover:scale-105">
         <div 
@@ -109,7 +102,9 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
         />
       </div>
 
-      <span className="text-xs font-semibold text-[#18181b] mt-1.5 leading-tight">
+      <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
+        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+      }`}>
         {label}
       </span>
       <span className="text-[11px] text-[#71717a] capitalize mt-0.5">
@@ -148,14 +143,10 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#18181b] shadow-xs'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#a1a1aa]'
+          ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
+          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
       }`}
     >
-      {isSelected && (
-        <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-[#18181b]" />
-      )}
-
       {/* Real Miniature Stamp Preview with Palette */}
       <div className="stamp-thumb-wrap w-[70px] h-[93px] my-1 transition-transform duration-200 group-hover:scale-105">
         <div 
@@ -164,7 +155,9 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
         />
       </div>
 
-      <span className="text-xs font-semibold text-[#18181b] mt-1.5 truncate max-w-full">
+      <span className={`text-xs font-semibold mt-1.5 truncate max-w-full transition-colors ${
+        isSelected ? 'text-[#2563eb]' : 'text-[#18181b] group-hover:text-[#2563eb]'
+      }`}>
         {palette.name}
       </span>
       <div className="flex items-center gap-1.5 mt-1">

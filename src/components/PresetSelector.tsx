@@ -51,8 +51,8 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               onClick={() => onSelectPreset(preset.config, preset.id)}
               className={`group flex-shrink-0 flex items-center gap-3 p-2.5 rounded-2xl text-left transition-all duration-150 cursor-pointer active:scale-[0.98] ${
                 isSelected
-                  ? 'bg-white border-2 border-[#18181b] shadow-xs'
-                  : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#a1a1aa]'
+                  ? 'bg-white border-2 border-[#2563eb] shadow-sm ring-2 ring-[#2563eb]/20'
+                  : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#93c5fd]'
               }`}
             >
               {/* Real rendered mini stamp */}
@@ -64,9 +64,6 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
                   <span className="text-xs font-semibold text-[#18181b] leading-tight">
                     {preset.name}
                   </span>
-                  {isSelected && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#18181b] flex-shrink-0" />
-                  )}
                 </div>
                 <span className="text-[11px] text-[#52525b] font-medium mt-0.5">
                   {preset.config.fromLocation || preset.config.code} &rarr; {preset.config.toLocation}
