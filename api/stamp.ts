@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resvg } from '@resvg/resvg-js';
+import path from 'node:path';
 import { renderStampSvg } from '../src/core/stampRenderer.js';
 import { DEFAULT_PALETTE, PALETTES } from '../src/core/themes.js';
 import { STAMP_PRESETS } from '../src/core/presets.js';
@@ -170,7 +171,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         value: width,
       },
       font: {
-        loadSystemFonts: true,
+        loadSystemFonts: false,
+        fontFiles: [
+          path.join(process.cwd(), 'public/fonts/DejaVuSans.ttf'),
+          path.join(process.cwd(), 'public/fonts/DejaVuSerif.ttf'),
+          path.join(process.cwd(), 'public/fonts/DejaVuSansMono.ttf'),
+        ],
+        defaultFontFamily: 'DejaVu Sans',
       },
     });
 

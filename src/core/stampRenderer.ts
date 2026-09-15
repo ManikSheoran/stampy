@@ -203,9 +203,9 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         <circle cx="${pmX}" cy="${pmY}" r="22" fill="none" stroke="${palette.postmark}" stroke-width="0.8" />
         
         <!-- Postmark City & Date text along centered lines -->
-        <text x="${pmX}" y="${pmY - 8}" text-anchor="middle" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" font-weight="700" letter-spacing="1.2" fill="${palette.postmark}">${pmCity}</text>
-        <text x="${pmX}" y="${pmY + 5}" text-anchor="middle" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="6.5" font-weight="600" letter-spacing="0.8" fill="${palette.postmark}">${postmark.date}</text>
-        <text x="${pmX}" y="${pmY + 14}" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="5.5" letter-spacing="0.5" fill="${palette.postmark}">POSTAL SERVICE</text>
+        <text x="${pmX}" y="${pmY - 8}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="7" font-weight="700" letter-spacing="1.2" fill="${palette.postmark}">${pmCity}</text>
+        <text x="${pmX}" y="${pmY + 5}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="6.5" font-weight="600" letter-spacing="0.8" fill="${palette.postmark}">${postmark.date}</text>
+        <text x="${pmX}" y="${pmY + 14}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="5.5" letter-spacing="0.5" fill="${palette.postmark}">POSTAL SERVICE</text>
         
         ${postmark.wavyBars ? `
           <!-- Killer wavy bars -->
@@ -262,7 +262,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         x="${W / 2}" 
         y="${inset + 17}" 
         text-anchor="middle" 
-        font-family="'JetBrains Mono', monospace" 
+        font-family="'DejaVu Sans Mono'"
         font-size="${routeFontSize}" 
         font-weight="700" 
         letter-spacing="2" 
@@ -274,7 +274,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         x="${codeX}" 
         y="${codeY}" 
         text-anchor="${codeAnchor}" 
-        font-family="'Playfair Display', Georgia, serif" 
+        font-family="'DejaVu Serif'"
         font-size="${codeFontSize}" 
         font-weight="900" 
         letter-spacing="1" 
@@ -286,7 +286,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         x="${denomX}" 
         y="${denomY}" 
         text-anchor="${denomAnchor}" 
-        font-family="'JetBrains Mono', 'Courier New', monospace" 
+        font-family="'DejaVu Sans Mono'"
         font-size="18" 
         font-weight="700" 
         letter-spacing="0.5" 
@@ -326,7 +326,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         x="${W / 2}" 
         y="${sepY2 + 25}" 
         text-anchor="middle" 
-        font-family="'Playfair Display', Georgia, serif" 
+        font-family="'DejaVu Serif'"
         font-size="13" 
         font-weight="700" 
         letter-spacing="4" 
@@ -338,7 +338,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         x="${W / 2}" 
         y="${sepY2 + 42}" 
         text-anchor="middle" 
-        font-family="'JetBrains Mono', monospace" 
+        font-family="'DejaVu Sans Mono'"
         font-size="7" 
         letter-spacing="1.5" 
         fill="${palette.secondary}"
