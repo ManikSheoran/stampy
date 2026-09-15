@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resvg } from '@resvg/resvg-js';
 import { renderStampSvg } from '../src/core/stampRenderer';
-import { PALETTES } from '../src/core/themes';
+import { DEFAULT_PALETTE, PALETTES } from '../src/core/themes';
 import { STAMP_PRESETS } from '../src/core/presets';
 import type { MotifType, BorderStyle } from '../src/core/types';
 
@@ -23,6 +23,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET, OPTIONS');
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
@@ -83,7 +88,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Theme: use requested or pick procedural seed
     const themeId = typeof query.theme === 'string' ? query.theme : paletteKeys[seed % paletteKeys.length];
-    config.palette = PALETTES[themeId] || PALETTES['vintage-navy'];
+    // `custom` palettes are local UI state and are not registered in the
+    // server palette catalog. Always keep the renderer supplied with a valid
+    // palette rather than allowing an unknown theme to cause a 500.
+    config.palette = PALETTES[themeId] || DEFAULT_PALETTE;
 
     // Motif: use requested or pick procedural seed
     const reqMotif = query.motif as MotifType;
