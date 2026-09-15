@@ -63,51 +63,51 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="api-modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-2xl rounded-3xl bg-[#fef3e2] border border-[#fa812f] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+        className="api-modal relative w-full max-w-2xl rounded-3xl bg-[#ffffff] border border-[#dcd7ca] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#fa812f] bg-[#fef3e2]">
+        <div className="api-modal-header flex items-center justify-between px-6 py-4 border-b border-[#dcd7ca] bg-[#ffffff]">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-full bg-[#fef3e2] text-[#212529]">
+            <div className="p-2.5 rounded-full bg-[#ffffff] text-[#141414]">
               <Globe size={18} weight="bold" />
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-[#212529]">
+              <h3 className="text-sm font-semibold text-[#141414]">
                 Dynamic GET Image API
               </h3>
-              <p className="text-xs text-[#212529]">
+              <p className="text-xs text-[#141414]">
                 Serverless route returning high-resolution PNG &amp; SVG stamps
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-[#212529] hover:text-[#212529] hover:bg-[#fef3e2] transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-[#141414] hover:text-[#141414] hover:bg-[#ffffff] transition-colors cursor-pointer"
           >
             <X size={18} weight="bold" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-5 text-[#212529] scrollbar-thin">
+        <div className="p-6 overflow-y-auto space-y-5 text-[#141414] scrollbar-thin">
           {/* Required Fields Explainer */}
-          <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f] space-y-2">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#212529]">
+          <div className="api-modal-note p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca] space-y-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
               <PaperPlaneTilt size={16} weight="fill" />
               <span>Query Parameters &amp; Fallbacks</span>
             </div>
-            <p className="text-xs text-[#212529] leading-relaxed">
-              <strong className="text-[#212529]">Required:</strong> <code className="px-1.5 py-0.5 rounded bg-[#fef3e2] font-mono text-[11px] text-[#212529]">to</code> and either <code className="px-1.5 py-0.5 rounded bg-[#fef3e2] font-mono text-[11px] text-[#212529]">from</code> or <code className="px-1.5 py-0.5 rounded bg-[#fef3e2] font-mono text-[11px] text-[#212529]">code</code>.
+            <p className="text-xs text-[#141414] leading-relaxed">
+              <strong className="text-[#141414]">Required:</strong> <code className="px-1.5 py-0.5 rounded bg-[#ffffff] font-mono text-[11px] text-[#141414]">to</code> and either <code className="px-1.5 py-0.5 rounded bg-[#ffffff] font-mono text-[11px] text-[#141414]">from</code> or <code className="px-1.5 py-0.5 rounded bg-[#ffffff] font-mono text-[11px] text-[#141414]">code</code>.
               <br />
-              <strong className="text-[#212529]">Procedural Generation:</strong> If you omit palette, motif, or frame, the API automatically generates harmonious values seeded deterministically by the route!
+              <strong className="text-[#141414]">Procedural Generation:</strong> If you omit palette, motif, or frame, the API automatically generates harmonious values seeded deterministically by the route!
             </p>
             {/* Minimal URL */}
-            <div className="pt-2 border-t border-[#fa812f] flex items-center justify-between text-xs font-mono">
-              <span className="text-[#212529]">Minimal Call:</span>
-              <code className="text-[#212529] bg-[#fef3e2] px-2 py-0.5 rounded-md border border-[#fa812f] truncate max-w-sm">
+            <div className="pt-2 border-t border-[#dcd7ca] flex items-center justify-between text-xs font-mono">
+              <span className="text-[#141414]">Minimal Call:</span>
+              <code className="text-[#141414] bg-[#ffffff] px-2 py-0.5 rounded-md border border-[#dcd7ca] truncate max-w-sm">
                 {minimalApiUrl}
               </code>
             </div>
@@ -116,7 +116,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
           {/* Full Live GET URL Box */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="text-xs font-medium text-[#212529]">
+              <label className="text-xs font-medium text-[#141414]">
                 Live Dynamic GET Endpoint
               </label>
               <div className="flex items-center gap-3">
@@ -124,7 +124,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
                   href={svgApiUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#212529] hover:text-[#212529]"
+                  className="api-modal-link inline-flex items-center gap-1 text-[11px] font-mono text-[#141414] hover:text-[#141414]"
                 >
                   <span>SVG Format</span>
                   <ArrowSquareOut size={11} />
@@ -133,7 +133,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
                   href={pngApiUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#fa4032] font-semibold hover:underline"
+                  className="api-modal-link inline-flex items-center gap-1 text-[11px] font-mono text-[#141414] font-semibold hover:underline"
                 >
                   <span>Open PNG</span>
                   <ArrowSquareOut size={11} />
@@ -141,13 +141,13 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
               </div>
             </div>
 
-            <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f] font-mono text-xs">
-              <span className="text-[#fa4032] font-bold select-none text-[11px] px-2 py-0.5 rounded-full bg-[#fef3e2] border border-[#fa812f]">GET</span>
+            <div className="api-modal-endpoint flex items-center gap-2 p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca] font-mono text-xs">
+              <span className="text-[#141414] font-bold select-none text-[11px] px-2 py-0.5 rounded-full bg-[#ffffff] border border-[#dcd7ca]">GET</span>
               <input
                 type="text"
                 readOnly
                 value={pngApiUrl}
-                className="flex-1 bg-transparent text-xs text-[#212529] outline-none select-all truncate font-mono"
+                className="flex-1 bg-transparent text-xs text-[#141414] outline-none select-all truncate font-mono"
               />
               <button
                 onClick={() => copyToClipboard(pngApiUrl, 'url')}
@@ -162,16 +162,16 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
           {/* Code Snippets */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-[#212529]">
+              <span className="text-xs font-medium text-[#141414]">
                 Embed Code Snippets
               </span>
-              <div className="flex bg-[#fef3e2] p-1 rounded-full text-xs">
+              <div className="api-modal-tabs flex bg-[#ffffff] p-1 rounded-full text-xs">
                 {(['html', 'markdown', 'fetch', 'curl'] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveSnippetTab(tab)}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer text-xs ${
-                      activeSnippetTab === tab ? 'bg-[#fef3e2] text-[#fa4032] font-semibold shadow-xs' : 'text-[#212529] hover:text-[#fa4032]'
+                      activeSnippetTab === tab ? 'api-tab-active bg-[#ffffff] text-[#141414] font-semibold shadow-xs' : 'text-[#141414] hover:text-[#141414]'
                     }`}
                   >
                     {tab === 'html' ? 'HTML' : tab === 'markdown' ? 'Markdown' : tab === 'fetch' ? 'JavaScript' : 'cURL'}
@@ -180,10 +180,10 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
               </div>
             </div>
 
-            <div className="relative rounded-2xl bg-[#212529] border border-[#212529] p-4 font-mono text-xs overflow-x-auto shadow-inner text-[#fef3e2]">
+            <div className="api-modal-code relative rounded-2xl bg-[#141414] border border-[#141414] p-4 font-mono text-xs overflow-x-auto shadow-inner text-[#ffffff]">
               <button
                 onClick={() => copyToClipboard(snippets[activeSnippetTab], 'code')}
-                className="absolute top-3 right-3 btn-secondary text-xs px-2.5 py-1 bg-[#fef3e2]/10 hover:bg-[#fef3e2]/20 text-[#fef3e2] border-[#fef3e2]/20"
+                className="absolute top-3 right-3 btn-secondary text-xs px-2.5 py-1 bg-[#ffffff]/10 hover:bg-[#ffffff]/20 text-[#ffffff] border-[#ffffff]/20"
               >
                 {copiedKey === 'code' ? (
                   <>
@@ -197,40 +197,40 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
                   </>
                 )}
               </button>
-              <pre className="leading-relaxed pr-16 text-[#fa812f]">{snippets[activeSnippetTab]}</pre>
+              <pre className="leading-relaxed pr-16 text-[#dcd7ca]">{snippets[activeSnippetTab]}</pre>
             </div>
           </div>
 
           {/* Parameters Reference */}
-          <div className="pt-2 border-t border-[#fa812f]">
-            <h4 className="text-xs font-medium text-[#212529] mb-2.5">
+          <div className="api-modal-reference pt-2 border-t border-[#dcd7ca]">
+            <h4 className="api-modal-reference-title text-xs font-medium text-[#141414] mb-2.5">
               Parameter Reference
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">from</span>: Origin (e.g. Delhi, NY)
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">from</span>: Origin (e.g. Delhi, NY)
               </div>
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">to</span>: Destination (e.g. Paris, Tokyo)
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">to</span>: Destination (e.g. Paris, Tokyo)
               </div>
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">code</span>: 2-letter monogram
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">code</span>: 2-letter monogram
               </div>
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">theme</span>: Palette name
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">theme</span>: Palette name
               </div>
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">motif</span>: Artwork motif style
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">motif</span>: Artwork motif style
               </div>
-              <div className="p-2.5 rounded-xl bg-[#fef3e2] border border-[#fa812f]">
-                <span className="text-[#212529] font-semibold">format</span>: png | svg
+              <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
+                <span className="text-[#141414] font-semibold">format</span>: png | svg
               </div>
             </div>
           </div>
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3.5 border-t border-[#fa812f] bg-[#fef3e2] flex items-center justify-end">
+        <div className="px-6 py-3.5 border-t border-[#dcd7ca] bg-[#ffffff] flex items-center justify-end">
           <button
             onClick={onClose}
             className="btn-primary text-xs"

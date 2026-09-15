@@ -43,7 +43,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative z-10 min-h-screen flex flex-col text-[#212529]">
+    <div className="studio-shell relative z-10 min-h-screen flex flex-col text-[#141414]">
       {/* Studio Header */}
       <Header
         config={config}
@@ -52,7 +52,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Studio Workspace */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col gap-5">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-12 flex flex-col gap-8">
         {/* Curated Philatelic Presets Bar */}
         <PresetSelector
           currentPresetId={activePresetId}
@@ -78,11 +78,20 @@ export const App: React.FC = () => {
             />
           </div>
         </div>
+
       </main>
 
       {/* Clean Minimal Footer */}
-      <footer className="border-t border-[#fa812f] bg-[#fef3e2]/60 px-6 py-4 text-center text-xs text-[#212529]">
-        Stampy — Postage stamp generator &amp; dynamic GET image API.
+      <footer className="border-t border-[#dcd7ca] bg-[#ffffff]/60 px-6 py-4 text-center text-xs text-[#141414]">
+        Stampy - Postage stamp generator &amp; dynamic GET image API. Built by{' '}
+        <a
+          href="https://x.com/mashrndev"
+          target="_blank"
+          rel="noreferrer"
+          className="ml-1 underline underline-offset-2 hover:text-[#5d43bb]"
+        >
+          Manik
+        </a>
       </footer>
 
       {/* API Integration Snippet Modal */}

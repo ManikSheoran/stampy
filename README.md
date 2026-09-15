@@ -1,4 +1,4 @@
-# 💌 Stampy — Aesthetic Postage Stamp Studio & GET API
+# 💌 Stampy - Aesthetic Postage Stamp Studio & GET API
 
 > An interactive web studio and serverless GET API to generate bespoke, vintage, and modernist postage stamps for mail letter post sites, notebooks, and digital correspondence.
 
@@ -58,8 +58,8 @@ Embed dynamic stamps directly into your mail letter post site with a simple `<im
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `from` | string | **Yes** (or `code`) | — | Sender city/origin (e.g. `Delhi`, `New York`) |
-| `to` | string | **Yes** | — | Destination city (e.g. `Paris`, `Tokyo`) |
+| `from` | string | **Yes** (or `code`) | - | Sender city/origin (e.g. `Delhi`, `New York`) |
+| `to` | string | **Yes** | - | Destination city (e.g. `Paris`, `Tokyo`) |
 | `code` | string | Optional | Auto from `from` | 2-3 letter monogram code |
 | `theme` | string | Optional | Procedural | `prussian-blue`, `carmine-rose`, `veronese-green`, `penny-black`, `burnt-sienna`, `tyrian-violet`, `nordic-slate`, `sepia-bistre` |
 | `motif` | string | Optional | Procedural | `waves`, `concentric`, `sunburst`, `bauhaus`, `topography`, `crest`, `compass`, `halftone` |
