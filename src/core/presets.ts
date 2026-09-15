@@ -1,5 +1,5 @@
-import type { StampPreset } from './types';
-import { PALETTES } from './themes';
+import type { StampPreset } from './types.js';
+import { PALETTES } from './themes.js';
 
 export const STAMP_PRESETS: StampPreset[] = [
   {

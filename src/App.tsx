@@ -43,7 +43,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="relative z-10 min-h-screen flex flex-col text-[#18181b]">
+    <div className="relative z-10 min-h-screen flex flex-col text-[#212529]">
       {/* Studio Header */}
       <Header
         config={config}
@@ -81,7 +81,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Clean Minimal Footer */}
-      <footer className="border-t border-[#e8e5de] bg-[#ffffff]/60 px-6 py-4 text-center text-xs text-[#71717a]">
+      <footer className="border-t border-[#fa812f] bg-[#fef3e2]/60 px-6 py-4 text-center text-xs text-[#212529]">
         Stampy — Postage stamp generator &amp; dynamic GET image API.
       </footer>
 

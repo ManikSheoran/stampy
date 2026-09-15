@@ -29,14 +29,14 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
     <div className="flex flex-col gap-2.5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-[#18181b]">
+          <span className="text-xs font-semibold text-[#212529]">
             Featured Presets
           </span>
-          <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
+          <span className="text-[11px] text-[#fa4032] bg-[#fef3e2] px-2.5 py-0.5 rounded-full font-semibold border border-[#fa812f]">
             {STAMP_PRESETS.length} presets
           </span>
         </div>
-        <span className="text-[11px] text-[#71717a] hidden sm:inline">
+        <span className="text-[11px] text-[#212529] hidden sm:inline">
           Click any preset to apply
         </span>
       </div>
@@ -51,8 +51,8 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               onClick={() => onSelectPreset(preset.config, preset.id)}
               className={`group flex-shrink-0 flex items-center gap-3 p-2.5 rounded-2xl text-left transition-all duration-150 cursor-pointer active:scale-[0.98] ${
                 isSelected
-                  ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
-                  : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
+                  ? 'bg-[#fef3e2] border-2 border-[#fa4032] shadow-sm ring-2 ring-[#fa4032]/20'
+                  : 'bg-[#fef3e2] border border-[#fa812f] hover:bg-[#fef3e2] hover:border-[#fa812f]'
               }`}
             >
               {/* Real rendered mini stamp */}
@@ -62,15 +62,15 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               <div className="flex flex-col pr-1">
                 <div className="flex items-center gap-1.5">
                   <span className={`text-xs font-semibold leading-tight transition-colors ${
-                    isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
+                    isSelected ? 'text-[#fa4032]' : 'text-[#212529] group-hover:text-[#fa4032]'
                   }`}>
                     {preset.name}
                   </span>
                 </div>
-                <span className="text-[11px] text-[#52525b] font-medium mt-0.5">
+                <span className="text-[11px] text-[#212529] font-medium mt-0.5">
                   {preset.config.fromLocation || preset.config.code} &rarr; {preset.config.toLocation}
                 </span>
-                <span className="text-[11px] text-[#71717a] capitalize mt-0.5">
+                <span className="text-[11px] text-[#212529] capitalize mt-0.5">
                   {preset.config.palette.name} &middot; {preset.config.denomination}
                 </span>
               </div>

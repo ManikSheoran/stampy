@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenAp
   };
 
   return (
-    <header className="border-b border-[#e8e5de] bg-[#ffffff]/90 backdrop-blur-md sticky top-0 z-40">
+    <header className="border-b border-[#fa812f] bg-[#fef3e2]/90 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
         {/* Brand with interactive Mini Stamp Logo */}
         <div className="flex items-center gap-3">
@@ -95,10 +95,10 @@ export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenAp
           />
 
           <div>
-            <h1 className="text-base font-bold text-[#18181b] tracking-tight font-serif">
+            <h1 className="text-base font-bold text-[#212529] tracking-tight font-serif">
               Stampy
             </h1>
-            <p className="text-[11px] text-[#71717a]">
+            <p className="text-[11px] text-[#212529]">
               Postal generator &amp; dynamic image API
             </p>
           </div>

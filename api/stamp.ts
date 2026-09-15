@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resvg } from '@resvg/resvg-js';
-import { renderStampSvg } from '../src/core/stampRenderer';
-import { DEFAULT_PALETTE, PALETTES } from '../src/core/themes';
-import { STAMP_PRESETS } from '../src/core/presets';
-import type { MotifType, BorderStyle } from '../src/core/types';
+import { renderStampSvg } from '../src/core/stampRenderer.js';
+import { DEFAULT_PALETTE, PALETTES } from '../src/core/themes.js';
+import { STAMP_PRESETS } from '../src/core/presets.js';
+import type { MotifType, BorderStyle } from '../src/core/types.js';
 
 // Helper for deterministic hash from string to seed random aesthetic choices
 function hashString(str: string): number {

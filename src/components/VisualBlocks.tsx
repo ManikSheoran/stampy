@@ -34,8 +34,8 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
+          ? 'bg-[#fef3e2] border-2 border-[#fa4032] shadow-sm ring-2 ring-[#fa4032]/20'
+          : 'bg-[#fef3e2] border border-[#fa812f] hover:bg-[#fef3e2] hover:border-[#fa812f]'
       }`}
     >
       {/* Real Miniature Stamp Preview */}
@@ -48,11 +48,11 @@ export const MotifBlock: React.FC<MotifBlockProps> = ({
 
       {/* Typography */}
       <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
-        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
+        isSelected ? 'text-[#fa4032]' : 'text-[#212529] group-hover:text-[#fa4032]'
       }`}>
         {label}
       </span>
-      <span className="text-[11px] text-[#71717a] capitalize mt-0.5">
+      <span className="text-[11px] text-[#212529] capitalize mt-0.5">
         {id}
       </span>
     </button>
@@ -90,8 +90,8 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
+          ? 'bg-[#fef3e2] border-2 border-[#fa4032] shadow-sm ring-2 ring-[#fa4032]/20'
+          : 'bg-[#fef3e2] border border-[#fa812f] hover:bg-[#fef3e2] hover:border-[#fa812f]'
       }`}
     >
       {/* Real Miniature Stamp Preview with Border */}
@@ -103,11 +103,11 @@ export const BorderBlock: React.FC<BorderBlockProps> = ({
       </div>
 
       <span className={`text-xs font-semibold mt-1.5 leading-tight transition-colors ${
-        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
+        isSelected ? 'text-[#fa4032]' : 'text-[#212529] group-hover:text-[#fa4032]'
       }`}>
         {label}
       </span>
-      <span className="text-[11px] text-[#71717a] capitalize mt-0.5">
+      <span className="text-[11px] text-[#212529] capitalize mt-0.5">
         {id}
       </span>
     </button>
@@ -143,8 +143,8 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
       onClick={onSelect}
       className={`group relative flex flex-col items-center p-3 rounded-2xl transition-all duration-150 cursor-pointer active:scale-[0.97] ${
         isSelected
-          ? 'bg-white border-2 border-[#0f766e] shadow-sm ring-2 ring-[#0f766e]/20'
-          : 'bg-[#faf9f6] border border-[#e8e5df] hover:bg-white hover:border-[#99f6e4]'
+          ? 'bg-[#fef3e2] border-2 border-[#fa4032] shadow-sm ring-2 ring-[#fa4032]/20'
+          : 'bg-[#fef3e2] border border-[#fa812f] hover:bg-[#fef3e2] hover:border-[#fa812f]'
       }`}
     >
       {/* Real Miniature Stamp Preview with Palette */}
@@ -156,7 +156,7 @@ export const PaletteBlock: React.FC<PaletteBlockProps> = ({
       </div>
 
       <span className={`text-xs font-semibold mt-1.5 truncate max-w-full transition-colors ${
-        isSelected ? 'text-[#0f766e]' : 'text-[#18181b] group-hover:text-[#0f766e]'
+        isSelected ? 'text-[#fa4032]' : 'text-[#212529] group-hover:text-[#fa4032]'
       }`}>
         {palette.name}
       </span>

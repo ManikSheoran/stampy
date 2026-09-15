@@ -1,5 +1,5 @@
-import type { StampConfig } from './types';
-import { generateMotifSvg } from './motifs';
+import type { StampConfig } from './types.js';
+import { generateMotifSvg } from './motifs.js';
 
 export interface RenderOptions {
   width?: number;

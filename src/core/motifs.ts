@@ -1,4 +1,4 @@
-import type { MotifType } from './types';
+import type { MotifType } from './types.js';
 
 interface MotifContext {
   cx: number;

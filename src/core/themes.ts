@@ -1,4 +1,4 @@
-import type { StampPalette } from './types';
+import type { StampPalette } from './types.js';
 
 export const PALETTES: Record<string, StampPalette> = {
   'prussian-blue': {

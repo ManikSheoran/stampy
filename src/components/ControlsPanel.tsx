@@ -72,8 +72,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
   return (
     <div className="flex flex-col h-[560px] sm:h-[600px] lg:h-[640px] rounded-3xl editorial-card overflow-hidden">
       {/* Category Navigation Tabs + Reset Button */}
-      <div className="flex items-center justify-between border-b border-[#e8e5de] bg-[#ffffff] px-4 py-3 gap-2 overflow-x-auto scrollbar-none">
-        <div className="flex items-center gap-1 bg-[#f1efe9] p-1 rounded-full">
+      <div className="flex items-center justify-between border-b border-[#fa812f] bg-[#fef3e2] px-4 py-3 gap-2 overflow-x-auto scrollbar-none">
+        <div className="flex items-center gap-1 bg-[#fef3e2] p-1 rounded-full">
           <button
             onClick={() => setActiveTab('route')}
             className={`whitespace-nowrap cursor-pointer ${
@@ -137,24 +137,24 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
       </div>
 
       {/* Tab Contents - Constrained inner scrolling */}
-      <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 text-[#18181b] scrollbar-thin">
+      <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4 text-[#212529] scrollbar-thin">
         {/* ===================== TAB 1: ROUTE & TEXT ===================== */}
         {activeTab === 'route' && (
           <div className="space-y-4">
             {/* Required in API banner */}
-            <div className="p-3.5 rounded-2xl bg-[#faf9f6] border border-[#e8e5df] flex items-start gap-3 text-xs text-[#52525b]">
-              <MapPin size={16} weight="fill" className="text-[#18181b] flex-shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-2xl bg-[#fef3e2] border border-[#fa812f] flex items-start gap-3 text-xs text-[#212529]">
+              <MapPin size={16} weight="fill" className="text-[#212529] flex-shrink-0 mt-0.5" />
               <div>
-                <strong className="font-semibold text-[#18181b] block">Postal Route</strong>
+                <strong className="font-semibold text-[#212529] block">Postal Route</strong>
                 A stamp represents a journey between sender and destination. Specify Origin and Destination below.
               </div>
             </div>
 
             {/* From & To Location inputs */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                <label className="text-xs font-medium text-[#71717a] block mb-1.5">
-                  From (Origin) <span className="text-[#18181b]">*</span>
+              <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                <label className="text-xs font-medium text-[#212529] block mb-1.5">
+                  From (Origin) <span className="text-[#212529]">*</span>
                 </label>
                 <input
                   type="text"
@@ -173,9 +173,9 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 />
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                <label className="text-xs font-medium text-[#71717a] block mb-1.5">
-                  To (Destination) <span className="text-[#18181b]">*</span>
+              <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                <label className="text-xs font-medium text-[#212529] block mb-1.5">
+                  To (Destination) <span className="text-[#212529]">*</span>
                 </label>
                 <input
                   type="text"
@@ -188,12 +188,12 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* City Code (2-3 letters) */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Corner Monogram (2–3 Letters)
                 </label>
-                <span className="text-[11px] text-[#71717a] bg-[#f1efe9] px-2 py-0.5 rounded-full font-medium">
+                <span className="text-[11px] text-[#212529] bg-[#fef3e2] px-2 py-0.5 rounded-full font-medium">
                   Serif
                 </span>
               </div>
@@ -206,21 +206,21 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                   placeholder="DL"
                   className="w-24 minimal-input text-lg font-serif font-bold text-center uppercase tracking-widest"
                 />
-                <div className="flex-1 text-xs text-[#71717a]">
+                <div className="flex-1 text-xs text-[#212529]">
                   Postal abbreviation (e.g. DL for Delhi, NY, TY, SF, PA, LD).
                 </div>
               </div>
 
               {/* Placement */}
-              <div className="mt-3.5 pt-3 border-t border-[#e8e5df] flex items-center justify-between">
-                <span className="text-xs text-[#71717a] font-medium">Code Placement</span>
-                <div className="flex gap-1 bg-[#f1efe9] p-0.5 rounded-full text-xs">
+              <div className="mt-3.5 pt-3 border-t border-[#fa812f] flex items-center justify-between">
+                <span className="text-xs text-[#212529] font-medium">Code Placement</span>
+                <div className="flex gap-1 bg-[#fef3e2] p-0.5 rounded-full text-xs">
                   <button
                     onClick={() => update('codePlacement', 'top-left')}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       config.codePlacement === 'top-left'
-                        ? 'bg-[#0f766e] text-white font-semibold shadow-xs'
-                        : 'text-[#71717a] hover:text-[#0f766e]'
+                        ? 'bg-[#fa4032] text-[#212529] font-semibold shadow-xs'
+                        : 'text-[#212529] hover:text-[#fa4032]'
                     }`}
                   >
                     Top-Left
@@ -229,8 +229,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     onClick={() => update('codePlacement', 'top-right')}
                     className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       config.codePlacement === 'top-right'
-                        ? 'bg-[#0f766e] text-white font-semibold shadow-xs'
-                        : 'text-[#71717a] hover:text-[#0f766e]'
+                        ? 'bg-[#fa4032] text-[#212529] font-semibold shadow-xs'
+                        : 'text-[#212529] hover:text-[#fa4032]'
                     }`}
                   >
                     Top-Right
@@ -240,8 +240,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* Denomination / Value Badge */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-              <label className="block text-xs font-medium text-[#71717a] mb-1.5">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+              <label className="block text-xs font-medium text-[#212529] mb-1.5">
                 Postal Denomination / Value
               </label>
               <input
@@ -259,8 +259,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     onClick={() => update('denomination', opt)}
                     className={`px-3 py-1 text-xs font-medium rounded-full transition-all cursor-pointer active:scale-[0.97] ${
                       config.denomination === opt
-                        ? 'bg-[#0f766e] text-white shadow-xs'
-                        : 'bg-white border border-[#e8e5df] text-[#52525b] hover:border-[#0f766e] hover:text-[#0f766e]'
+                        ? 'bg-[#fa4032] text-[#212529] shadow-xs'
+                        : 'bg-[#fef3e2] border border-[#fa812f] text-[#212529] hover:border-[#fa4032] hover:text-[#fa4032]'
                     }`}
                   >
                     {opt}
@@ -271,8 +271,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
 
             {/* Sub-header & Title */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                <label className="text-xs font-medium text-[#71717a] block mb-1.5">
+              <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                <label className="text-xs font-medium text-[#212529] block mb-1.5">
                   Header Subtitle
                 </label>
                 <input
@@ -285,8 +285,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 />
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                <label className="text-xs font-medium text-[#71717a] block mb-1.5">
+              <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                <label className="text-xs font-medium text-[#212529] block mb-1.5">
                   Lower Main Title
                 </label>
                 <input
@@ -307,10 +307,10 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
           <div className="space-y-4">
             <div>
               <div className="flex items-center justify-between mb-2.5">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Color Palettes
                 </label>
-                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
+                <span className="text-[11px] text-[#fa4032] bg-[#fef3e2] px-2.5 py-0.5 rounded-full font-semibold border border-[#fa812f]">
                   {Object.keys(PALETTES).length} formulas
                 </span>
               </div>
@@ -330,19 +330,19 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* Custom Color Pickers Accordion */}
-            <div className="pt-2 border-t border-[#e8e5df]">
+            <div className="pt-2 border-t border-[#fa812f]">
               <button
                 onClick={() => setShowCustomColors(!showCustomColors)}
-                className="flex items-center justify-between w-full text-xs font-medium text-[#52525b] hover:text-[#0f766e] transition-colors py-1 cursor-pointer"
+                className="flex items-center justify-between w-full text-xs font-medium text-[#212529] hover:text-[#fa4032] transition-colors py-1 cursor-pointer"
               >
                 <span>Custom Color Inks</span>
-                <span className="text-[#0f766e] font-bold">{showCustomColors ? '▲' : '▼'}</span>
+                <span className="text-[#fa4032] font-bold">{showCustomColors ? '▲' : '▼'}</span>
               </button>
 
               {showCustomColors && (
-                <div className="grid grid-cols-2 gap-3 mt-3 p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+                <div className="grid grid-cols-2 gap-3 mt-3 p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
                   <div>
-                    <label className="text-xs text-[#71717a] block mb-1 font-medium">Paper (Background)</label>
+                    <label className="text-xs text-[#212529] block mb-1 font-medium">Paper (Background)</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -360,7 +360,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                   </div>
 
                   <div>
-                    <label className="text-xs text-[#71717a] block mb-1 font-medium">Primary Ink</label>
+                    <label className="text-xs text-[#212529] block mb-1 font-medium">Primary Ink</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -378,7 +378,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                   </div>
 
                   <div>
-                    <label className="text-xs text-[#71717a] block mb-1 font-medium">Secondary Accent</label>
+                    <label className="text-xs text-[#212529] block mb-1 font-medium">Secondary Accent</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -396,7 +396,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                   </div>
 
                   <div>
-                    <label className="text-xs text-[#71717a] block mb-1 font-medium">Border Frame</label>
+                    <label className="text-xs text-[#212529] block mb-1 font-medium">Border Frame</label>
                     <div className="flex items-center gap-2">
                       <input
                         type="color"
@@ -423,10 +423,10 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
           <div className="space-y-4">
             <div>
               <div className="flex items-center justify-between mb-2.5">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Motif Artwork
                 </label>
-                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
+                <span className="text-[11px] text-[#fa4032] bg-[#fef3e2] px-2.5 py-0.5 rounded-full font-semibold border border-[#fa812f]">
                   {MOTIFS.length} styles
                 </span>
               </div>
@@ -448,10 +448,10 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* Motif Scale Slider */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-medium text-[#71717a]">Motif Scale</label>
-                <span className="text-xs font-semibold text-[#0f766e]">{Math.round(config.motifScale * 100)}%</span>
+                <label className="text-xs font-medium text-[#212529]">Motif Scale</label>
+                <span className="text-xs font-semibold text-[#fa4032]">{Math.round(config.motifScale * 100)}%</span>
               </div>
               <input
                 type="range"
@@ -460,15 +460,15 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="0.05"
                 value={config.motifScale}
                 onChange={(e) => update('motifScale', parseFloat(e.target.value))}
-                className="w-full accent-[#0f766e] cursor-pointer"
+                className="w-full accent-[#fa4032] cursor-pointer"
               />
             </div>
 
             {/* Motif Density / Complexity Slider */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-medium text-[#71717a]">Line Density &amp; Complexity</label>
-                <span className="text-xs font-semibold text-[#0f766e]">{config.motifComplexity}</span>
+                <label className="text-xs font-medium text-[#212529]">Line Density &amp; Complexity</label>
+                <span className="text-xs font-semibold text-[#fa4032]">{config.motifComplexity}</span>
               </div>
               <input
                 type="range"
@@ -477,7 +477,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="1"
                 value={config.motifComplexity}
                 onChange={(e) => update('motifComplexity', parseInt(e.target.value, 10))}
-                className="w-full accent-[#0f766e] cursor-pointer"
+                className="w-full accent-[#fa4032] cursor-pointer"
               />
             </div>
           </div>
@@ -488,10 +488,10 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
           <div className="space-y-4">
             <div>
               <div className="flex items-center justify-between mb-2.5">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Frame Styles
                 </label>
-                <span className="text-[11px] text-[#0f766e] bg-[#f0fdfa] px-2.5 py-0.5 rounded-full font-semibold border border-[#99f6e4]">
+                <span className="text-[11px] text-[#fa4032] bg-[#fef3e2] px-2.5 py-0.5 rounded-full font-semibold border border-[#fa812f]">
                   {BORDER_STYLES.length} styles
                 </span>
               </div>
@@ -512,12 +512,12 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* Perforation Radius */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Perforation Tooth Depth
                 </label>
-                <span className="text-xs font-semibold text-[#0f766e]">{config.perforationRadius} px</span>
+                <span className="text-xs font-semibold text-[#fa4032]">{config.perforationRadius} px</span>
               </div>
               <input
                 type="range"
@@ -526,17 +526,17 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="0.5"
                 value={config.perforationRadius}
                 onChange={(e) => update('perforationRadius', parseFloat(e.target.value))}
-                className="w-full accent-[#0f766e] cursor-pointer"
+                className="w-full accent-[#fa4032] cursor-pointer"
               />
             </div>
 
             {/* Perforation Spacing */}
-            <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-medium text-[#71717a]">
+                <label className="text-xs font-medium text-[#212529]">
                   Perforation Spacing
                 </label>
-                <span className="text-xs font-semibold text-[#0f766e]">{config.perforationSpacing} px</span>
+                <span className="text-xs font-semibold text-[#fa4032]">{config.perforationSpacing} px</span>
               </div>
               <input
                 type="range"
@@ -545,7 +545,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 step="1"
                 value={config.perforationSpacing}
                 onChange={(e) => update('perforationSpacing', parseInt(e.target.value, 10))}
-                className="w-full accent-[#0f766e] cursor-pointer"
+                className="w-full accent-[#fa4032] cursor-pointer"
               />
             </div>
           </div>
@@ -554,24 +554,24 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
         {/* ===================== TAB 5: POSTMARK ===================== */}
         {activeTab === 'postmark' && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-[#18181b]">Postal Ink Cancellation</span>
-                <span className="text-xs text-[#71717a]">Rubber-stamped postmark overlay</span>
+                <span className="text-xs font-semibold text-[#212529]">Postal Ink Cancellation</span>
+                <span className="text-xs text-[#212529]">Rubber-stamped postmark overlay</span>
               </div>
               <input
                 type="checkbox"
                 checked={config.postmark.enabled}
                 onChange={(e) => updatePostmark('enabled', e.target.checked)}
-                className="w-4 h-4 rounded accent-[#0f766e] cursor-pointer"
+                className="w-4 h-4 rounded accent-[#fa4032] cursor-pointer"
               />
             </div>
 
             {config.postmark.enabled && (
               <div className="space-y-4 pt-1">
                 {/* City */}
-                <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                  <label className="block text-xs font-medium text-[#71717a] mb-1.5">
+                <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                  <label className="block text-xs font-medium text-[#212529] mb-1.5">
                     Post Office / City Seal
                   </label>
                   <input
@@ -584,8 +584,8 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 </div>
 
                 {/* Date */}
-                <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                  <label className="block text-xs font-medium text-[#71717a] mb-1.5">
+                <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                  <label className="block text-xs font-medium text-[#212529] mb-1.5">
                     Cancellation Date
                   </label>
                   <input
@@ -598,12 +598,12 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                 </div>
 
                 {/* Stamp Rotation */}
-                <div className="p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
+                <div className="p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-xs font-medium text-[#71717a]">
+                    <label className="text-xs font-medium text-[#212529]">
                       Stamp Angle
                     </label>
-                    <span className="text-xs font-semibold text-[#0f766e]">{config.postmark.rotation}°</span>
+                    <span className="text-xs font-semibold text-[#fa4032]">{config.postmark.rotation}°</span>
                   </div>
                   <input
                     type="range"
@@ -612,18 +612,18 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
                     step="1"
                     value={config.postmark.rotation}
                     onChange={(e) => updatePostmark('rotation', parseInt(e.target.value, 10))}
-                    className="w-full accent-[#0f766e] cursor-pointer"
+                    className="w-full accent-[#fa4032] cursor-pointer"
                   />
                 </div>
 
                 {/* Wavy Killer Bars */}
-                <div className="flex items-center justify-between p-4 rounded-2xl bg-[#faf9f6] border border-[#e8e5df]">
-                  <span className="text-xs font-semibold text-[#18181b]">Wavy Postal Bars</span>
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-[#fef3e2] border border-[#fa812f]">
+                  <span className="text-xs font-semibold text-[#212529]">Wavy Postal Bars</span>
                   <input
                     type="checkbox"
                     checked={config.postmark.wavyBars}
                     onChange={(e) => updatePostmark('wavyBars', e.target.checked)}
-                    className="w-4 h-4 rounded accent-[#0f766e] cursor-pointer"
+                    className="w-4 h-4 rounded accent-[#fa4032] cursor-pointer"
                   />
                 </div>
               </div>
