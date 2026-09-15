@@ -1,0 +1,13 @@
+{
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/stamp.png",
+      "destination": "/api/stamp?format=png"
+    },
+    {
+      "source": "/api/stamp.svg",
+      "destination": "/api/stamp?format=svg"
+    }
+  ]
+}

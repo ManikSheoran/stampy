@@ -1,0 +1,78 @@
+import type { StampPalette } from './types';
+
+export const PALETTES: Record<string, StampPalette> = {
+  'prussian-blue': {
+    id: 'prussian-blue',
+    name: 'Prussian Blue',
+    paper: '#F8F6F0',
+    primary: '#142C44',
+    secondary: '#365D82',
+    border: '#142C44',
+    postmark: '#0E1F30',
+  },
+  'carmine-rose': {
+    id: 'carmine-rose',
+    name: 'Carmine Red',
+    paper: '#FAF5F2',
+    primary: '#9B2326',
+    secondary: '#C44D4F',
+    border: '#7A1719',
+    postmark: '#5C0E10',
+  },
+  'veronese-green': {
+    id: 'veronese-green',
+    name: 'Sage Veronese',
+    paper: '#F3F4EE',
+    primary: '#244738',
+    secondary: '#4D7562',
+    border: '#1B372B',
+    postmark: '#12251D',
+  },
+  'penny-black': {
+    id: 'penny-black',
+    name: 'Penny Black',
+    paper: '#FBF9F5',
+    primary: '#171719',
+    secondary: '#4A4A4E',
+    border: '#171719',
+    postmark: '#0A0A0C',
+  },
+  'burnt-sienna': {
+    id: 'burnt-sienna',
+    name: 'Burnt Sienna',
+    paper: '#FAF5ED',
+    primary: '#9E4424',
+    secondary: '#C76A47',
+    border: '#783116',
+    postmark: '#52200D',
+  },
+  'tyrian-violet': {
+    id: 'tyrian-violet',
+    name: 'Tyrian Violet',
+    paper: '#FAF5F8',
+    primary: '#54233C',
+    secondary: '#824664',
+    border: '#3D162A',
+    postmark: '#2B0E1D',
+  },
+  'nordic-slate': {
+    id: 'nordic-slate',
+    name: 'Nordic Slate',
+    paper: '#F2F5F8',
+    primary: '#2C3E50',
+    secondary: '#566F87',
+    border: '#1E2C3A',
+    postmark: '#131D26',
+  },
+  'sepia-bistre': {
+    id: 'sepia-bistre',
+    name: 'Sepia Bistre',
+    paper: '#EFE7DB',
+    primary: '#47331D',
+    secondary: '#735738',
+    border: '#332312',
+    postmark: '#24170A',
+  },
+};
+
+export const DEFAULT_PALETTE = PALETTES['prussian-blue'];
