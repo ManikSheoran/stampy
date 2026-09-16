@@ -52,7 +52,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         optional: {
           theme: 'vintage-navy | terracotta | botanic-sage | obsidian | burgundy | nordic-slate | sepia-archive | cyber-noir',
           motif: 'waves | concentric | sunburst | bauhaus | topography | crest | compass | halftone',
-          denom: 'Stamp price/value, e.g. "25¢", "50¢", "₹5", "¥80"',
+          distance: 'Route distance in kilometres; controls the rupee denomination',
+          denom: 'Optional rupee denomination override, e.g. "₹5"',
           border: 'classic-double | single | dashed | ornate | minimal',
           postmark: '1 (with ink stamp) or 0 (clean)',
           format: 'png (default) | svg',
@@ -66,7 +67,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const paletteKeys = Object.keys(PALETTES);
     const motifsList: MotifType[] = ['waves', 'concentric', 'sunburst', 'bauhaus', 'topography', 'crest', 'compass', 'halftone'];
     const borderList: BorderStyle[] = ['classic-double', 'ornate', 'dashed', 'single'];
-    const denomsList = ['25¢', '50¢', '₹5', '¥80', '£1', '15¢', '№ 07'];
+    const distanceParam = typeof query.distance === 'string' ? Number.parseFloat(query.distance) : 0;
+    const distanceKm = Number.isFinite(distanceParam) ? Math.max(0, distanceParam) : 0;
+    const denominationTiers = distanceKm <= 250
+      ? ['₹1', '₹2', '₹5']
+      : distanceKm <= 1000
+        ? ['₹5', '₹10', '₹15']
+        : distanceKm <= 3000
+          ? ['₹15', '₹20', '₹25']
+          : ['₹25', '₹35', '₹50'];
 
     // Start with base preset
     const config = { ...STAMP_PRESETS[0].config };
@@ -110,12 +119,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       config.borderStyle = borderList[(seed >> 4) % borderList.length];
     }
 
-    // Denomination: use requested or pick procedural seed
-    if (typeof query.denom === 'string' && query.denom.trim()) {
-      config.denomination = query.denom.trim().slice(0, 8);
-    } else {
-      config.denomination = denomsList[(seed >> 3) % denomsList.length];
-    }
+    // Denomination: always rupees, with a deterministic variation inside the
+    // distance tier so the same route keeps the same ticket value.
+    const requestedDenom = typeof query.denom === 'string' ? query.denom.trim() : '';
+    config.denomination = /^₹\d+$/.test(requestedDenom)
+      ? requestedDenom.slice(0, 8)
+      : denominationTiers[(seed >> 3) % denominationTiers.length];
 
     // Titles & Subtitles
     if (typeof query.sub === 'string') {
