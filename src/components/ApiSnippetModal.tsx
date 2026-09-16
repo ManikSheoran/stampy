@@ -69,7 +69,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="api-modal-header flex items-center justify-between px-6 py-4 border-b border-[#dcd7ca] bg-[#ffffff]">
+        <div className="api-modal-header flex items-start sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-[#dcd7ca] bg-[#ffffff]">
           <div className="flex items-center gap-3">
             <div className="p-2.5 rounded-full bg-[#ffffff] text-[#141414]">
               <Globe size={18} weight="bold" />
@@ -92,7 +92,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-5 text-[#141414] scrollbar-thin">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-[#141414] scrollbar-thin">
           {/* Required Fields Explainer */}
           <div className="api-modal-note p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca] space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-[#141414]">
@@ -105,7 +105,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
               <strong className="text-[#141414]">Procedural Generation:</strong> If you omit palette, motif, or frame, the API automatically generates harmonious values seeded deterministically by the route!
             </p>
             {/* Minimal URL */}
-            <div className="pt-2 border-t border-[#dcd7ca] flex items-center justify-between text-xs font-mono">
+            <div className="api-modal-minimal-call pt-2 border-t border-[#dcd7ca] flex items-center justify-between gap-2 text-xs font-mono">
               <span className="text-[#141414]">Minimal Call:</span>
               <code className="text-[#141414] bg-[#ffffff] px-2 py-0.5 rounded-md border border-[#dcd7ca] truncate max-w-sm">
                 {minimalApiUrl}
@@ -119,7 +119,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
               <label className="text-xs font-medium text-[#141414]">
                 Live Dynamic GET Endpoint
               </label>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <a
                   href={svgApiUrl}
                   target="_blank"
@@ -206,7 +206,7 @@ curl -o "letter-stamp.png" "${pngApiUrl}"`,
             <h4 className="api-modal-reference-title text-xs font-medium text-[#141414] mb-2.5">
               Parameter Reference
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
               <div className="api-param p-2.5 rounded-xl bg-[#ffffff] border border-[#dcd7ca]">
                 <span className="text-[#141414] font-semibold">from</span>: Origin (e.g. Delhi, NY)
               </div>

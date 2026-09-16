@@ -7,7 +7,9 @@ import {
   Code, 
   ShareNetwork,
   Check,
-  FileCode
+  FileCode,
+  List,
+  X
 } from '@phosphor-icons/react';
 import { downloadStampPng, downloadStampSvg } from '../utils/exportImage';
 import { renderMiniStampSvg, type MiniStampFigure } from '../core/miniStamp';
@@ -37,6 +39,7 @@ const FIGURES: MiniStampFigure[] = ['sun', 'star', 'waves', 'diamond', 'flower']
 export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenApiModal }) => {
   const [shareCopied, setShareCopied] = useState(false);
   const [logoFigure, setLogoFigure] = useState<MiniStampFigure>('sun');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleRandomize = () => {
     const paletteKeys = Object.keys(PALETTES);
@@ -79,7 +82,7 @@ export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenAp
 
   return (
     <header className="border-b border-[#dcd7ca] bg-[#ffffff]/90 backdrop-blur-md sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
         {/* Brand with interactive Mini Stamp Logo */}
         <div className="flex items-center gap-3">
           <div 
@@ -105,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenAp
         </div>
 
         {/* Minimalist Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2">
           {/* Shuffle Button */}
           <button
             onClick={handleRandomize}
@@ -163,7 +166,44 @@ export const Header: React.FC<HeaderProps> = ({ config, onChangeConfig, onOpenAp
             <span>Export PNG</span>
           </button>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="sm:hidden btn-secondary p-2.5"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <X size={18} weight="bold" /> : <List size={18} weight="bold" />}
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <div className="sm:hidden border-t border-[#dcd7ca] bg-[#ffffff] px-4 py-3">
+          <div className="grid grid-cols-2 gap-2">
+            <button onClick={() => { handleRandomize(); setIsMenuOpen(false); }} className="btn-secondary w-full text-xs">
+              <Shuffle size={14} weight="bold" />
+              <span>Shuffle</span>
+            </button>
+            <button onClick={() => { handleShareUrl(); setIsMenuOpen(false); }} className="btn-secondary w-full text-xs">
+              {shareCopied ? <Check size={14} weight="bold" /> : <ShareNetwork size={14} weight="bold" />}
+              <span>{shareCopied ? 'Copied!' : 'Share'}</span>
+            </button>
+            <button onClick={() => { onOpenApiModal(); setIsMenuOpen(false); }} className="btn-secondary w-full text-xs">
+              <Code size={14} weight="bold" />
+              <span>GET API</span>
+            </button>
+            <button onClick={() => downloadStampSvg(config)} className="btn-secondary w-full text-xs">
+              <FileCode size={14} weight="bold" />
+              <span>Download SVG</span>
+            </button>
+            <button onClick={() => { downloadStampPng(config, 3); setIsMenuOpen(false); }} className="btn-primary col-span-2 w-full text-xs">
+              <DownloadSimple size={14} weight="bold" />
+              <span>Export PNG</span>
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

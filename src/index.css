@@ -368,3 +368,30 @@ body {
   color: #5d43bb;
   letter-spacing: 0.03em;
 }
+
+@media (max-width: 639px) {
+  .canvas-toolbar {
+    flex-wrap: wrap;
+    row-gap: 0.65rem;
+  }
+
+  .canvas-toolbar-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .api-modal {
+    max-height: 94vh;
+    box-shadow: 6px 6px 0 #dcd7ca;
+  }
+
+  .api-modal-minimal-call {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .api-modal-minimal-call code {
+    max-width: 100%;
+    width: 100%;
+  }
+}

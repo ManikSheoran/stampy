@@ -151,7 +151,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* From & To Location inputs */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca]">
                 <label className="text-xs font-medium text-[#141414] block mb-1.5">
                   From (Origin) <span className="text-[#141414]">*</span>
@@ -270,7 +270,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
             </div>
 
             {/* Sub-header & Title */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca]">
                 <label className="text-xs font-medium text-[#141414] block mb-1.5">
                   Header Subtitle
@@ -340,7 +340,7 @@ export const ControlsPanel: React.FC<ControlsPanelProps> = ({ config, onChange, 
               </button>
 
               {showCustomColors && (
-                <div className="grid grid-cols-2 gap-3 mt-3 p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 p-4 rounded-2xl bg-[#ffffff] border border-[#dcd7ca]">
                   <div>
                     <label className="text-xs text-[#141414] block mb-1 font-medium">Paper (Background)</label>
                     <div className="flex items-center gap-2">

@@ -45,8 +45,8 @@ export const StampCanvas: React.FC<StampCanvasProps> = ({ config, onOpenApiModal
   return (
     <div className="relative flex flex-col h-[560px] sm:h-[600px] lg:h-[640px] rounded-3xl editorial-card overflow-hidden">
       {/* Top Stage Toolbar */}
-      <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#dcd7ca] bg-[#ffffff]">
-        <div className="flex items-center gap-2">
+      <div className="canvas-toolbar flex items-center justify-between px-5 py-3.5 border-b border-[#dcd7ca] bg-[#ffffff]">
+        <div className="canvas-toolbar-controls flex items-center gap-2">
           <div className="flex items-center gap-1.5 text-xs font-semibold text-[#141414]">
             <GridFour size={15} weight="bold" className="text-[#141414]" />
             <span>Canvas</span>
