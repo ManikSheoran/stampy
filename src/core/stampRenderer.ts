@@ -208,13 +208,13 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         <text x="${pmX}" y="${pmY + 14}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="5.5" letter-spacing="0.5" fill="${palette.postmark}">POSTAL SERVICE</text>
         
         ${postmark.wavyBars ? `
-          <!-- Killer wavy bars -->
+          <!-- Killer wavy bars (contained within stamp boundary) -->
           <g transform="translate(${pmX + 38}, ${pmY - 18})" stroke="${palette.postmark}" stroke-width="1.6" fill="none">
-            <path d="M 5 -10 Q 20 -18 35 -10 T 65 -10 T 95 -10" />
-            <path d="M 5 -2  Q 20 -10 35 -2  T 65 -2  T 95 -2" />
-            <path d="M 5 6   Q 20 -2  35 6   T 65 6   T 95 6" />
-            <path d="M 5 14  Q 20 6   35 14  T 65 14  T 95 14" />
-            <path d="M 5 22  Q 20 14  35 22  T 65 22  T 95 22" />
+            <path d="M 4 -10 Q 14 -17 24 -10 T 40 -10" />
+            <path d="M 4 -2  Q 14 -9  24 -2  T 40 -2" />
+            <path d="M 4 6   Q 14 -1  24 6   T 40 6" />
+            <path d="M 4 14  Q 14 7   24 14  T 40 14" />
+            <path d="M 4 22  Q 14 15  24 22  T 40 22" />
           </g>
         ` : ''}
       </g>
@@ -222,7 +222,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
   }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" overflow="hidden" style="overflow: hidden; display: block; width: 100%; height: auto;">
   <defs>
     <!-- Symmetrical Stamp Perforation Mask: Corners protected -->
     <mask id="${maskId}">

@@ -6,7 +6,18 @@ import { renderStampSvg } from './core/stampRenderer';
 import { encodeStampToQuery, decodeQueryToStamp } from './utils/urlState';
 import { copyStampToClipboard, downloadStampPng, downloadStampSvg } from './utils/exportImage';
 import { ApiSnippetModal } from './components/ApiSnippetModal';
-import { ArrowUpRight, Check, DownloadSimple, LockKey, LockKeyOpen, Shuffle, Sparkle } from '@phosphor-icons/react';
+import {
+  ArrowUpRight,
+  Check,
+  Copy,
+  DownloadSimple,
+  Export,
+  LockKey,
+  LockKeyOpen,
+  Shuffle,
+  SlidersHorizontal,
+  Sparkle,
+} from '@phosphor-icons/react';
 
 type LockKeyName = 'route' | 'code' | 'value' | 'palette' | 'motif' | 'frame';
 type Locks = Record<LockKeyName, boolean>;
@@ -47,6 +58,32 @@ export const App: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [isApiModalOpen, setIsApiModalOpen] = useState(false);
   const [isFinding, setIsFinding] = useState(false);
+  const [isMobileEditOpen, setIsMobileEditOpen] = useState(false);
+  const [isMobileExportOpen, setIsMobileExportOpen] = useState(false);
+
+  const activeLocksCount = useMemo(() => Object.values(locks).filter(Boolean).length, [locks]);
+
+  useEffect(() => {
+    if (isMobileEditOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileEditOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileEditOpen(false);
+        setIsMobileExportOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   useEffect(() => {
     window.history.replaceState(null, '', `${window.location.pathname}?${encodeStampToQuery(config)}`);
@@ -308,6 +345,257 @@ export const App: React.FC = () => {
       </main>
 
       <ApiSnippetModal config={config} isOpen={isApiModalOpen} onClose={() => setIsApiModalOpen(false)} />
+
+      {/* Mobile Click-Outside Scrim for Export Popover */}
+      {isMobileExportOpen && (
+        <div
+          className="mobile-popover-scrim"
+          onClick={() => setIsMobileExportOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Apple-style Floating Bottom Dock (Mobile only) */}
+      <div className="mobile-dock-wrapper">
+        {/* Export Pills Popover (appears ONLY after clicking Export) */}
+        {isMobileExportOpen && (
+          <div className="mobile-export-pills" role="menu" aria-label="Export options">
+              <button
+                type="button"
+                className="export-pill-btn"
+                onClick={() => {
+                  downloadStampPng(config, 3);
+                  setIsMobileExportOpen(false);
+                }}
+                title="Download high-resolution PNG"
+              >
+                <DownloadSimple size={14} weight="bold" />
+                <span>PNG</span>
+              </button>
+              <button
+                type="button"
+                className="export-pill-btn"
+                onClick={() => {
+                  downloadStampSvg(config);
+                  setIsMobileExportOpen(false);
+                }}
+                title="Download scalable vector SVG"
+              >
+                <ArrowUpRight size={14} weight="bold" />
+                <span>SVG</span>
+              </button>
+              <button
+                type="button"
+                className="export-pill-btn"
+                onClick={async () => {
+                  await copy();
+                  setIsMobileExportOpen(false);
+                }}
+                title="Copy stamp image to clipboard"
+              >
+                <Copy size={14} weight="bold" />
+                <span>Copy</span>
+              </button>
+              <button
+                type="button"
+                className="export-pill-btn"
+                onClick={() => {
+                  setIsMobileExportOpen(false);
+                  setIsApiModalOpen(true);
+                }}
+                title="Open developer API modal"
+              >
+                <Sparkle size={14} weight="bold" />
+                <span>API</span>
+              </button>
+            </div>
+        )}
+
+        {/* 3 Buttons Floating Dock (Edit on its own, Shuffle in center, Export on its own) */}
+        <nav className="apple-dock" aria-label="Mobile quick actions">
+          <button
+            type="button"
+            className="dock-btn dock-btn-secondary"
+            onClick={() => {
+              setIsMobileExportOpen(false);
+              setIsMobileEditOpen(true);
+            }}
+            aria-label="Customize stamp"
+          >
+            <SlidersHorizontal size={16} weight="bold" />
+            <span>Edit</span>
+            {activeLocksCount > 0 && <span className="dock-badge">{activeLocksCount}</span>}
+          </button>
+
+          <button
+            type="button"
+            className="dock-btn dock-btn-primary"
+            onClick={findAnother}
+            aria-label="Shuffle stamp"
+          >
+            <Shuffle size={16} weight="bold" />
+            <span>Shuffle</span>
+          </button>
+
+          <button
+            type="button"
+            className={`dock-btn dock-btn-secondary ${isMobileExportOpen ? 'is-active' : ''}`}
+            onClick={() => setIsMobileExportOpen((prev) => !prev)}
+            aria-expanded={isMobileExportOpen}
+            aria-label="Export options"
+          >
+            <Export size={16} weight="bold" />
+            <span>Export</span>
+          </button>
+        </nav>
+      </div>
+
+      {/* Mobile Apple-style Edit Sheet */}
+      {isMobileEditOpen && (
+        <div
+          className="apple-sheet-backdrop"
+          onClick={() => setIsMobileEditOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Customize stamp"
+        >
+          <div className="apple-sheet" onClick={(e) => e.stopPropagation()}>
+            <div className="apple-sheet-grabber" />
+            <div className="apple-sheet-header">
+              <div>
+                <h3>Customize</h3>
+                <p className="apple-sheet-sub">Postal route, monogram & details</p>
+              </div>
+              <button
+                type="button"
+                className="apple-sheet-done-btn"
+                onClick={() => setIsMobileEditOpen(false)}
+              >
+                Done
+              </button>
+            </div>
+
+            <div className="apple-sheet-body">
+              <div className="apple-card">
+                <span className="apple-card-title">Route</span>
+                <div className="apple-fields-col">
+                  <label className="apple-input-field">
+                    <span className="apple-label-text">From (Origin)</span>
+                    <input
+                      value={config.fromLocation}
+                      onChange={(e) => update({ fromLocation: e.target.value })}
+                      placeholder="Delhi"
+                    />
+                  </label>
+                  <label className="apple-input-field">
+                    <span className="apple-label-text">To (Destination)</span>
+                    <input
+                      value={config.toLocation}
+                      onChange={(e) => update({ toLocation: e.target.value })}
+                      placeholder="Paris"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="apple-card">
+                <span className="apple-card-title">Stamp Details</span>
+                <div className="apple-fields-col">
+                  <div className="apple-input-field">
+                    <div className="apple-label-with-lock">
+                      <span className="apple-label-text">Code</span>
+                      <button
+                        type="button"
+                        className={`apple-lock-toggle ${locks.code ? 'is-locked' : ''}`}
+                        onClick={() => toggleLock('code')}
+                        aria-label={locks.code ? 'Unlock code' : 'Lock code'}
+                      >
+                        {locks.code ? <LockKey size={12} weight="fill" /> : <LockKeyOpen size={12} />}
+                        <span>{locks.code ? 'Locked' : 'Lock'}</span>
+                      </button>
+                    </div>
+                    <input
+                      value={config.code}
+                      maxLength={4}
+                      onChange={(e) => update({ code: e.target.value.toUpperCase().replace(/[^A-Z]/g, '') })}
+                      placeholder="DL"
+                    />
+                  </div>
+
+                  <div className="apple-input-field">
+                    <div className="apple-label-with-lock">
+                      <span className="apple-label-text">Value</span>
+                      <button
+                        type="button"
+                        className={`apple-lock-toggle ${locks.value ? 'is-locked' : ''}`}
+                        onClick={() => toggleLock('value')}
+                        aria-label={locks.value ? 'Unlock value' : 'Lock value'}
+                      >
+                        {locks.value ? <LockKey size={12} weight="fill" /> : <LockKeyOpen size={12} />}
+                        <span>{locks.value ? 'Locked' : 'Lock'}</span>
+                      </button>
+                    </div>
+                    <input
+                      inputMode="numeric"
+                      value={config.denomination.replace(/[^0-9]/g, '')}
+                      onChange={(e) => update({ denomination: stripCurrency(e.target.value) })}
+                      placeholder="25"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="apple-card">
+                <span className="apple-card-title">Lock Attributes on Shuffle</span>
+                <div className="apple-locks-grid">
+                  <button
+                    type="button"
+                    className={`apple-chip ${locks.route ? 'is-locked' : ''}`}
+                    onClick={() => toggleLock('route')}
+                  >
+                    {locks.route ? <LockKey size={13} weight="fill" /> : <LockKeyOpen size={13} />}
+                    <span>Route</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`apple-chip ${locks.motif ? 'is-locked' : ''}`}
+                    onClick={() => toggleLock('motif')}
+                  >
+                    {locks.motif ? <LockKey size={13} weight="fill" /> : <LockKeyOpen size={13} />}
+                    <span>Motif</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`apple-chip ${locks.palette ? 'is-locked' : ''}`}
+                    onClick={() => toggleLock('palette')}
+                  >
+                    {locks.palette ? <LockKey size={13} weight="fill" /> : <LockKeyOpen size={13} />}
+                    <span>Colour</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`apple-chip ${locks.frame ? 'is-locked' : ''}`}
+                    onClick={() => toggleLock('frame')}
+                  >
+                    {locks.frame ? <LockKey size={13} weight="fill" /> : <LockKeyOpen size={13} />}
+                    <span>Frame</span>
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="apple-sheet-shuffle-btn"
+                onClick={findAnother}
+              >
+                <Shuffle size={16} weight="bold" />
+                <span>Shuffle Unlocked</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

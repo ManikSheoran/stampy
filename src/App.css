@@ -16,6 +16,8 @@
 /* App Container */
 .stampy-app {
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -226,6 +228,12 @@
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.25s ease;
   user-select: none;
   flex-shrink: 0;
+}
+
+.stamp-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .stamp-art:hover {
@@ -732,20 +740,684 @@
   }
 }
 
-/* Mobile Stage Stacking */
+/* Mobile-Only Redesign (< 768px) with Apple Floating Dock & Sheets */
 @media (max-width: 767px) {
-  .stamp-stage-inner {
-    flex-direction: column;
-    gap: 16px;
+  /* Hide desktop inline form & duplicate action buttons on mobile */
+  .controls-column {
+    display: none !important;
   }
 
+  .canvas-actions {
+    display: none !important;
+  }
+
+  .site-nav .header-action-btn {
+    display: none !important;
+  }
+
+  /* Hide flank pills on mobile stage so stamp is 100% mathematically centered */
   .stage-flank {
-    flex-direction: row;
-    height: auto;
-    gap: 10px;
-    justify-content: center;
+    display: none !important;
+  }
+
+  .site-header {
+    height: 56px;
+  }
+
+  .site-header-inner {
+    padding: 0 18px;
+  }
+
+  .wordmark {
+    font-size: 20px;
+  }
+
+  .nav-cta {
+    font-size: 11px;
+    padding: 6px 12px;
+    gap: 5px;
+  }
+
+  .studio-main {
+    padding: 12px 18px calc(112px + env(safe-area-inset-bottom, 20px));
+    min-height: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Dead-Center Stage Layout */
+  .studio-stage-area {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
+
+  .intro-block {
+    text-align: center;
+    margin: 2px auto 10px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .intro-block .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .intro-block h1 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 0 0 5px;
+  }
+
+  .intro-copy {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--muted);
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  /* Dead-center Stamp Canvas */
+  .canvas-column {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .stamp-stage {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    padding: 6px 0 14px !important;
+    background: transparent !important;
+  }
+
+  .stamp-stage-inner {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    gap: 0 !important;
+  }
+
+  .stamp-art-wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+  }
+
+  .stamp-art {
+    display: block !important;
+    margin: 0 auto !important;
+    width: min(72vw, 250px) !important;
+    max-width: 100% !important;
+  }
+
+  .stamp-art svg {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .stamp-art:hover {
+    transform: none;
+  }
+
+  .studio-footer {
+    margin-top: 24px;
+    padding-top: 14px;
+    font-size: 10.5px;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   Apple-Style Floating Bottom Dock & Mobile Sheets (Liquid Glass)
+   ========================================================================== */
+
+/* Hide on Desktop / Tablet */
+@media (min-width: 768px) {
+  .mobile-dock-wrapper,
+  .apple-sheet-backdrop {
+    display: none !important;
+  }
+}
+
+/* Floating Bottom Dock Container */
+.mobile-dock-wrapper {
+  position: fixed;
+  bottom: calc(26px + env(safe-area-inset-bottom, 16px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 900;
+  width: min(calc(100vw - 32px), 320px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Resting Floating Bottom Bar (Apple 3-Button Pill) */
+.apple-dock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  box-shadow: 0 12px 32px -4px rgba(17, 17, 17, 0.14), 0 2px 8px rgba(17, 17, 17, 0.04);
+  width: 100%;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.dock-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+.dock-btn:active {
+  transform: scale(0.96);
+}
+
+.dock-btn-secondary {
+  flex: 1;
+  background: var(--soft);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.dock-btn-secondary:active,
+.dock-btn-secondary.is-active {
+  background: var(--soft-hover);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.dock-btn-primary {
+  flex: 1.35;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dock-btn-primary:active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.dock-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0 4px;
+  line-height: 1;
+  margin-left: 1px;
+}
+
+/* Contextual Export Pills Popover (appears ONLY after clicking Export) */
+.mobile-popover-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 890;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-export-pills {
+  position: relative;
+  z-index: 901;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 6px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  box-shadow: 0 10px 28px -4px rgba(17, 17, 17, 0.14), 0 2px 8px -2px rgba(17, 17, 17, 0.06);
+  animation: pills-pop-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: auto;
+  pointer-events: auto;
+}
+
+@keyframes pills-pop-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.export-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 9999px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+
+.export-pill-btn:active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+  transform: scale(0.96);
+}
+
+/* Apple-style Bottom Sheets (Warm Paper & Ink) */
+.apple-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(17, 17, 17, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: sheet-fade-in 0.2s ease-out;
+  display: flex;
+  align-items: flex-end;
+}
+
+.apple-sheet {
+  position: relative;
+  width: 100%;
+  max-height: 84vh;
+  background: var(--paper);
+  border-radius: 24px 24px 0 0;
+  border-top: 2px solid var(--ink);
+  box-shadow: 0 -12px 40px rgba(17, 17, 17, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: max(24px, env(safe-area-inset-bottom, 24px));
+  animation: sheet-slide-up 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.apple-sheet-grabber {
+  width: 36px;
+  height: 4.5px;
+  background: rgba(17, 17, 17, 0.2);
+  border-radius: 999px;
+  margin: 10px auto 12px;
+  flex-shrink: 0;
+}
+
+.apple-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px 14px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.apple-sheet-header h3 {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.apple-sheet-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 2px 0 0;
+}
+
+.apple-sheet-done-btn {
+  background: var(--ink);
+  color: #ffffff;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 7px 18px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.apple-sheet-done-btn:active {
+  transform: scale(0.95);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.apple-sheet-close-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.apple-sheet-body {
+  padding: 14px 18px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* Inset Cards */
+.apple-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 13px 14px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.apple-card-title {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.apple-fields-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.apple-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.apple-label-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.apple-label-with-lock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.apple-input-field input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.apple-input-field input:focus {
+  border-color: var(--ink);
+  background: #ffffff;
+}
+
+.apple-lock-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.apple-lock-toggle.is-locked {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+
+.apple-locks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.apple-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.apple-chip.is-locked {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+
+.apple-sheet-shuffle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #ffffff;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.apple-sheet-shuffle-btn:active {
+  transform: scale(0.97);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Action Sheet (Export) */
+.apple-action-sheet {
+  background: var(--paper);
+  border-top: 2px solid var(--ink);
+}
+
+.apple-actions-list {
+  padding: 14px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  box-sizing: border-box;
+}
+
+.apple-action-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 13px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.12s ease, background-color 0.12s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.apple-action-item:active {
+  transform: scale(0.985);
+  background: var(--card);
+  border-color: var(--ink);
+}
+
+.apple-action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.apple-action-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.apple-action-title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.apple-action-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.apple-action-arrow {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.apple-sheet-cancel-btn {
+  margin: 4px 18px 10px;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.apple-sheet-cancel-btn:active {
+  background: #e2ddd5;
 }
 
 /* API Redesign Modal */
