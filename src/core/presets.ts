@@ -1,5 +1,6 @@
 import type { StampPreset } from './types.js';
 import { PALETTES } from './themes.js';
+import { getCurrentPostalDate } from './stampRenderer.js';
 
 export const STAMP_PRESETS: StampPreset[] = [
   {
@@ -25,7 +26,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'DELHI G.P.O.',
-        date: '14 SEP 2026',
+        date: getCurrentPostalDate(),
         rotation: -18,
         wavyBars: true,
         opacity: 0.65,
@@ -56,7 +57,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'TOKYO CENTRAL',
-        date: '12 OCT 2026',
+        date: getCurrentPostalDate(),
         rotation: 12,
         wavyBars: true,
         opacity: 0.6,
@@ -87,7 +88,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: false,
         city: 'NEW YORK NY',
-        date: '01 AUG 2026',
+        date: getCurrentPostalDate(),
         rotation: -15,
         wavyBars: true,
         opacity: 0.7,
@@ -118,7 +119,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'ALEXANDRIA',
-        date: '28 JUL 2026',
+        date: getCurrentPostalDate(),
         rotation: -22,
         wavyBars: true,
         opacity: 0.7,
@@ -149,7 +150,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'OSLO PORT',
-        date: '05 NOV 2026',
+        date: getCurrentPostalDate(),
         rotation: 16,
         wavyBars: true,
         opacity: 0.65,
@@ -180,7 +181,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'LONDON EC1',
-        date: '19 SEP 2026',
+        date: getCurrentPostalDate(),
         rotation: -14,
         wavyBars: true,
         opacity: 0.6,
@@ -211,7 +212,7 @@ export const STAMP_PRESETS: StampPreset[] = [
       postmark: {
         enabled: true,
         city: 'GENÈVE R.P.',
-        date: '03 DEC 2026',
+        date: getCurrentPostalDate(),
         rotation: -25,
         wavyBars: true,
         opacity: 0.7,

@@ -8,6 +8,14 @@ export interface RenderOptions {
   idPrefix?: string;
 }
 
+export function getCurrentPostalDate(date: Date = new Date()): string {
+  const day = String(date.getDate()).padStart(2, '0');
+  const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+  return `${day} ${month} ${year}`;
+}
+
 export function renderStampSvg(config: StampConfig, options: RenderOptions = {}): string {
   const W = options.width || 300;
   const H = options.height || 400;
@@ -194,6 +202,9 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
     const pmRot = postmark.rotation ?? -18;
     const pmOp = postmark.opacity ?? 0.68;
     const pmCity = (postmark.city || fromLocation || 'DELHI').toUpperCase();
+    const pmDate = (postmark.date && postmark.date.trim())
+      ? postmark.date.trim().toUpperCase()
+      : getCurrentPostalDate();
 
     postmarkSvg = `
       <g id="postmark-seal" transform="rotate(${pmRot} ${pmX} ${pmY})" opacity="${pmOp}">
@@ -204,7 +215,7 @@ export function renderStampSvg(config: StampConfig, options: RenderOptions = {})
         
         <!-- Postmark City & Date text along centered lines -->
         <text x="${pmX}" y="${pmY - 8}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="7" font-weight="700" letter-spacing="1.2" fill="${palette.postmark}">${pmCity}</text>
-        <text x="${pmX}" y="${pmY + 5}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="6.5" font-weight="600" letter-spacing="0.8" fill="${palette.postmark}">${postmark.date}</text>
+        <text x="${pmX}" y="${pmY + 5}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="6.5" font-weight="600" letter-spacing="0.8" fill="${palette.postmark}">${pmDate}</text>
         <text x="${pmX}" y="${pmY + 14}" text-anchor="middle" font-family="'DejaVu Sans Mono'" font-size="5.5" letter-spacing="0.5" fill="${palette.postmark}">POSTAL SERVICE</text>
         
         ${postmark.wavyBars ? `

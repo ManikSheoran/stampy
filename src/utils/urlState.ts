@@ -1,6 +1,7 @@
 import type { StampConfig, MotifType, BorderStyle } from '../core/types';
 import { PALETTES } from '../core/themes';
 import { STAMP_PRESETS } from '../core/presets';
+import { getCurrentPostalDate } from '../core/stampRenderer';
 
 /**
  * Generate API / query URL for the stamp
@@ -21,7 +22,9 @@ export function encodeStampToQuery(config: StampConfig): string {
   if (config.postmark.enabled) {
     params.set('postmark', '1');
     if (config.postmark.city) params.set('city', config.postmark.city);
-    if (config.postmark.date) params.set('date', config.postmark.date);
+    if (config.postmark.date && config.postmark.date.trim() !== getCurrentPostalDate()) {
+      params.set('date', config.postmark.date.trim());
+    }
   } else {
     params.set('postmark', '0');
   }
