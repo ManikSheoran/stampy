@@ -1,4 +1,4 @@
-# Stampy
+# Stampyyy.
 
 Stampy is a generative postage stamp studio and HTTP GET API for creating publication-grade philatelic stamps. It provides an interactive web interface to configure, lock, and randomize stamp attributes, alongside an automated API to generate scalable vector SVG and raster PNG assets on demand.
 
