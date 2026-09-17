@@ -117,13 +117,13 @@ export const App: React.FC = () => {
       <main className="studio-main">
         <div className="studio-stage-area">
           <section className="intro-block">
-            <p className="eyebrow">A SMALL MACHINE FOR BIG JOURNEYS</p>
+            <p className="eyebrow">VECTOR POSTAGE ENGINE</p>
             <h1>
-              Find a stamp<br />
-              <em>worth keeping.</em>
+              Make a stamp<br />
+              <em>for anything.</em>
             </h1>
             <p className="intro-copy">
-              A generative postage stamp for the places you’ve been, the places you’re going, and everywhere in between.
+              Generate publication-grade postage in one click. Download PNG, SVG, or call the API.
             </p>
           </section>
 
