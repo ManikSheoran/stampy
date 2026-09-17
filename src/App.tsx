@@ -6,7 +6,7 @@ import { renderStampSvg } from './core/stampRenderer';
 import { encodeStampToQuery, decodeQueryToStamp } from './utils/urlState';
 import { copyStampToClipboard, downloadStampPng, downloadStampSvg } from './utils/exportImage';
 import { ApiSnippetModal } from './components/ApiSnippetModal';
-import { ArrowUpRight, DownloadSimple, LockKey, LockKeyOpen, Shuffle, Sparkle } from '@phosphor-icons/react';
+import { ArrowUpRight, Check, DownloadSimple, LockKey, LockKeyOpen, Shuffle, Sparkle } from '@phosphor-icons/react';
 
 type LockKeyName = 'route' | 'code' | 'value' | 'palette' | 'motif' | 'frame';
 type Locks = Record<LockKeyName, boolean>;
@@ -44,6 +44,7 @@ export const App: React.FC = () => {
     return { ...STAMP_PRESETS[0].config, denomination: '25' };
   });
   const [locks, setLocks] = useState<Locks>(defaultLocks);
+  const [copied, setCopied] = useState(false);
   const [isApiModalOpen, setIsApiModalOpen] = useState(false);
   const [isFinding, setIsFinding] = useState(false);
 
@@ -73,7 +74,10 @@ export const App: React.FC = () => {
   };
 
   const copy = async () => {
-    await copyStampToClipboard(config);
+    if (await copyStampToClipboard(config)) {
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    }
   };
 
   return (
@@ -150,12 +154,20 @@ export const App: React.FC = () => {
                   </button>
                 </div>
 
-                <div
-                  className="stamp-art stamp-shadow"
-                  dangerouslySetInnerHTML={{ __html: svg }}
-                  onClick={copy}
-                  title="Click stamp to copy to clipboard"
-                />
+                <div className="stamp-art-wrapper">
+                  <div
+                    className="stamp-art stamp-shadow"
+                    dangerouslySetInnerHTML={{ __html: svg }}
+                    onClick={copy}
+                    title="Click stamp to copy to clipboard"
+                  />
+                  {copied && (
+                    <div className="stamp-copied-popup" role="status" aria-live="polite">
+                      <Check size={14} weight="bold" />
+                      <span>copied to clipboard</span>
+                    </div>
+                  )}
+                </div>
 
                 <div className="stage-flank stage-flank-right">
                   <button
